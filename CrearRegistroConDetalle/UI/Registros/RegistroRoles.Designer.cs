@@ -247,7 +247,7 @@ namespace CrearRegistroConDetalle.UI.Registros
             this.Controls.Add(this.DescripcionLabel);
             this.Controls.Add(this.RolIdLabel);
             this.Name = "RegistroRoles";
-            this.Text = "RegistroRoles";
+            this.Text = "Registro de Roles";
             this.Load += new System.EventHandler(this.RegistroRoles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.RolIdNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.RolErrorProvider)).EndInit();

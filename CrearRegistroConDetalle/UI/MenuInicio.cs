@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CrearRegistroConDetalle.UI.Registros;
 
 namespace CrearRegistroConDetalle
 {
@@ -15,18 +16,27 @@ namespace CrearRegistroConDetalle
         public MenuInicio()
         {
             InitializeComponent();
+            this.UsuarioToolStripMenuItem.Click += new EventHandler(this.UsuarioToolStripMenuItemClicked);
+            this.RolesToolStripMenuItem.Click += new EventHandler(this.RolesToolStripMenuItemClicked);
+
         }
 
-        private void rUsuariosButton_Click(object sender, EventArgs e)
+        private void RolesToolStripMenuItemClicked(object sender, EventArgs e)
         {
-            UI.Registros.RegistroUsuarios registrarUsuario = new UI.Registros.RegistroUsuarios();
-            registrarUsuario.Show();
-        }
-
-        private void rRolesButton_Click(object sender, EventArgs e)
-        {
-            UI.Registros.RegistroRoles registrarRoles = new UI.Registros.RegistroRoles();
+            /*var rRoles = new RegistroRoles();
+            rRoles.MdiParent = this;
+            rRoles.Show();*/
+            var registrarRoles = new RegistroRoles();
             registrarRoles.Show();
+        }
+
+        private void UsuarioToolStripMenuItemClicked(object sender, EventArgs e)
+        {
+            /*var rUsuarios = new RegistroRoles();
+            rUsuarios.MdiParent = this;
+            rUsuarios.Show();*/
+            var registrarUsuarios = new RegistroUsuarios();
+            registrarUsuarios.Show();
         }
     }
 }
