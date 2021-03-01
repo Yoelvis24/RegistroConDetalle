@@ -33,31 +33,37 @@ namespace CrearRegistroConDetalle.BLL
             return encontrado;
         }
 
-        public static bool Guardar(Roles roles, string descipcion)
+        private static bool Insertar(Roles roles)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
 
             try
             {
-                if (ExisteRol(descipcion))
-                    return paso;
-                if (contexto.Roles.Add(roles) != null)
-                    paso = contexto.SaveChanges() > 0;
+                contexto.Roles.Add(roles);
+                paso = contexto.SaveChanges() > 0;
             }
             catch (Exception)
             {
+
                 throw;
             }
             finally
             {
                 contexto.Dispose();
             }
-
             return paso;
         }
 
-        public static bool Modificar(Roles roles)
+        public static bool Guardar(Roles roles)
+        {
+            if (!ExisteRol(roles.Descripcion))
+                return Insertar(roles);
+            else
+                return Modificar(roles);
+        }
+
+        private static bool Modificar(Roles roles)
         {
             bool paso = false;
             Contexto contexto = new Contexto();
