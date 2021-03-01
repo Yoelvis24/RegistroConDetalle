@@ -120,26 +120,12 @@ namespace CrearRegistroConDetalle.UI.Registros
         private void GuardarButton_Click(object sender, EventArgs e)
         {
             Roles roles;
-            bool paso = false;
-
+            
             if (!Validar())
                 return;
-            roles = LlenaClase();
 
-            //Determinar si es guardar o modificar
-            if (RolIdNumericUpDown.Value == 0)
-            {
-                paso = RolesBLL.Guardar(roles, DescripcionTextBox.Text);
-            }
-            else
-            {
-                if (!ExisteEnBaseDeDatos())
-                {
-                    MessageBox.Show("No se puede modificar un rol que no existe", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                paso = RolesBLL.Modificar(roles);
-            }
+            roles = LlenaClase();
+            var paso = RolesBLL.Guardar(roles);
             if (paso)
             {
                 Limpiar();
